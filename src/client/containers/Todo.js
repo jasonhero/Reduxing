@@ -1,16 +1,29 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Add_Todo } from '../actions/ActionTypes';
+import { getRandomTodo } from '../actions/ActionTypes';
 
 class App extends Component {
   constructor(props) {
     super(props)
+    this.addTodo = this.addTodo.bind(this);
+  }
+  addTodo() {
+    this.props.getRandomTodo();
   }
   render() {
     console.log(this.props, 'PROPIT');
     return (
       <div>
+        <h3>Todo List</h3>
+        <button onClick={this.addTodo}>Add Todo</button>
+        {
+          this.props.todos.map(todo => {
+            return (
+              <div>{todo.text}</div>
+            )
+          })
+        }
       </div>
     )
   }
@@ -22,14 +35,7 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(Add_Todo, dispatch)
-  }
-}
 
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default connect( mapStateToProps, {
+  getRandomTodo
+})(App)

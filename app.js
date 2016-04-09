@@ -34,7 +34,7 @@ app.use(require("webpack-hot-middleware")(compiler));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'src/client/assets', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'src/client/assets', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

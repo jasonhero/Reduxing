@@ -21,7 +21,7 @@ render((
   <Provider store={Store}>
     <Router history={browserHistory} >
       <Route path='/'>
-        <IndexRoute component={Home}/>
+        <IndexRoute component={Home} />
       </Route>
       <Route path='*' component={PageNotFound}>
       </Route>
